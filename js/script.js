@@ -2,6 +2,7 @@ const calcDisplay = document.querySelector('.display');
 const calcButtons = document.querySelector('.btn-container');
 const storage = [];
 let operator = '';
+let displayValue = '0';
 
 calcButtons.addEventListener('click', handleButtonClick);
 
@@ -16,17 +17,18 @@ function operate(storage, operator) {
   console.log(storage.reduce(operations[operator]));
 }
 
-function updateDisplay(displayValue) {
+function updateDisplay() {
   calcDisplay.textContent = displayValue;
 }
 
 function handleButtonClick(event) {
   const target = event.target;
   const classList = target.classList;
+  if (target.tagName !== 'BUTTON') return;
 
   switch (true) {
     case classList.contains('number'):
-      console.log(`${target.textContent} was clicked`);
+      storeNumber(target);
       break;
     case classList.contains('operator'):
       console.log(`${target.textContent} was clicked`);
@@ -35,4 +37,12 @@ function handleButtonClick(event) {
       console.log(`${target.textContent} was clicked`);
       break;
   }
+}
+
+function storeNumber(target) {
+  if (displayValue === '0') {
+    displayValue = '';
+  }
+  displayValue += target.textContent;
+  updateDisplay();
 }
