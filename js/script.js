@@ -1,3 +1,4 @@
+const calcDisplay = document.querySelector('.display');
 const storage = [];
 let operator = '';
 
@@ -10,4 +11,8 @@ const operations = {
 
 function operate(storage, operator) {
   console.log(storage.reduce(operations[operator]));
+}
+
+function updateDisplay(displayValue) {
+  calcDisplay.textContent = displayValue;
 }
