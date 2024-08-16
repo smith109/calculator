@@ -28,7 +28,7 @@ function handleButtonClick(event) {
 
   switch (true) {
     case classList.contains('number'):
-      storeNumber(target);
+      inputNumber(target);
       break;
     case classList.contains('operator'):
       console.log(`${target.textContent} was clicked`);
@@ -39,7 +39,7 @@ function handleButtonClick(event) {
   }
 }
 
-function storeNumber(target) {
+function inputNumber(target) {
   if (displayValue === '0') {
     displayValue = '';
   }
