@@ -31,7 +31,7 @@ function handleButtonClick(event) {
       inputNumber(target);
       break;
     case classList.contains('operator'):
-      console.log(`${target.textContent} was clicked`);
+      inputOperator(classList);
       break;
     case classList.contains('equals'):
       console.log(`${target.textContent} was clicked`);
@@ -45,4 +45,10 @@ function inputNumber(target) {
   }
   displayValue += target.textContent;
   updateDisplay();
+}
+
+function inputOperator(classList) {
+  storage.push(displayValue);
+  operator = classList[1];
+  displayValue = '0';
 }
