@@ -1,6 +1,6 @@
 const calcDisplay = document.querySelector('.display');
 const calcButtons = document.querySelector('.btn-container');
-const storage = [];
+let storage = [];
 let operator = '';
 let displayValue = '0';
 
@@ -14,7 +14,8 @@ const operations = {
 };
 
 function operate(storage, operator) {
-  console.log(storage.reduce(operations[operator]));
+  return storage.map(num => Number(num))
+    .reduce(operations[operator]);
 }
 
 function updateDisplay() {
@@ -34,7 +35,7 @@ function handleButtonClick(event) {
       inputOperator(classList);
       break;
     case classList.contains('equals'):
-      console.log(`${target.textContent} was clicked`);
+      calculate();
       break;
   }
 }
@@ -51,4 +52,13 @@ function inputOperator(classList) {
   storage.push(displayValue);
   operator = classList[1];
   displayValue = '0';
+}
+
+function calculate() {
+  storage.push(displayValue);
+  let result = operate(storage, operator);
+  displayValue = result;
+  storage = [];
+  operator = '';
+  updateDisplay();
 }
