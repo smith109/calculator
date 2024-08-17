@@ -15,7 +15,7 @@ const operations = {
 };
 
 function operate(storage, operator) {
-  if (storage.length < 2) return;
+  if (storage.length < 2) return displayValue;
   return storage.map(Number).reduce(operations[operator]);
 }
 
@@ -78,6 +78,18 @@ function getPercentage() {
   updateDisplay();
 }
 
+function deleteCharacter() {
+  if (displayValue === '0' ||
+    displayValue === 'Error' ||
+    typeof (displayValue) === 'number') {
+    return
+  };
+
+  let newString = displayValue.slice(0, -1)
+  displayValue = newString === '' ? '0' : newString;
+  updateDisplay();
+}
+
 function handleButtonClick(event) {
   const target = event.target;
   const classList = target.classList;
@@ -101,6 +113,9 @@ function handleButtonClick(event) {
       break;
     case classList.contains('percent'):
       getPercentage();
+      break;
+    case classList.contains('backspace'):
+      deleteCharacter();
       break;
   }
 }
