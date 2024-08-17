@@ -58,6 +58,13 @@ function calculate() {
   displayValue = '0';
 }
 
+function clearCalculator() {
+  storage = [];
+  operator = '';
+  displayValue = '0';
+  updateDisplay();
+}
+
 function handleButtonClick(event) {
   const target = event.target;
   const classList = target.classList;
@@ -72,6 +79,9 @@ function handleButtonClick(event) {
       break;
     case classList.contains('equals'):
       calculate();
+      break;
+    case classList.contains('clear'):
+      clearCalculator();
       break;
   }
 }
