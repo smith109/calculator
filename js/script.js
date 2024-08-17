@@ -73,6 +73,11 @@ function negateNumber() {
   updateDisplay();
 }
 
+function getPercentage() {
+  displayValue = (Number(displayValue) / 100).toString();
+  updateDisplay();
+}
+
 function handleButtonClick(event) {
   const target = event.target;
   const classList = target.classList;
@@ -93,6 +98,9 @@ function handleButtonClick(event) {
       break;
     case classList.contains('negate'):
       negateNumber();
+      break;
+    case classList.contains('percent'):
+      getPercentage();
       break;
   }
 }
