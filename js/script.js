@@ -68,6 +68,11 @@ function clearCalculator() {
   updateDisplay();
 }
 
+function negateNumber() {
+  displayValue = (Number(displayValue) * -1).toString();
+  updateDisplay();
+}
+
 function handleButtonClick(event) {
   const target = event.target;
   const classList = target.classList;
@@ -85,6 +90,9 @@ function handleButtonClick(event) {
       break;
     case classList.contains('clear'):
       clearCalculator();
+      break;
+    case classList.contains('negate'):
+      negateNumber();
       break;
   }
 }
