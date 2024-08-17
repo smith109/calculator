@@ -49,8 +49,15 @@ function inputNumber(target) {
 }
 
 function inputOperator(classList) {
-  storage.push(displayValue);
+  if (operator) {
+    storage.push(displayValue);
+    let result = operate(storage, operator);
+    displayValue = result;
+    storage = [];
+    updateDisplay();
+  }
   operator = classList[1];
+  storage.push(displayValue);
   displayValue = '0';
 }
 
@@ -61,4 +68,5 @@ function calculate() {
   storage = [];
   operator = '';
   updateDisplay();
+  displayValue = '0';
 }
