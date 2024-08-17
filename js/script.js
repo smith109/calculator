@@ -5,6 +5,7 @@ let operator = '';
 let displayValue = '0';
 let resultDisplayed = false;
 
+document.addEventListener('keydown', handleKeyboard);
 calcButtons.addEventListener('click', handleButtonClick);
 
 const operations = {
@@ -23,8 +24,7 @@ function updateDisplay() {
   calcDisplay.textContent = displayValue;
 }
 
-function inputNumber(target) {
-  const number = target.textContent;
+function inputNumber(number) {
   if (number === '.' && displayValue.includes('.')) return;
 
   if (resultDisplayed) {
@@ -39,14 +39,14 @@ function inputNumber(target) {
   updateDisplay();
 }
 
-function inputOperator(classList) {
+function inputOperator(op) {
   if (operator) {
     storage.push(displayValue);
     displayValue = operate(storage, operator);
     storage = [];
     updateDisplay();
   }
-  operator = classList[1];
+  operator = op;
   storage.push(displayValue);
   displayValue = '0';
 }
@@ -97,10 +97,10 @@ function handleButtonClick(event) {
 
   switch (true) {
     case classList.contains('number'):
-      inputNumber(target);
+      inputNumber(target.textContent);
       break;
     case classList.contains('operator'):
-      inputOperator(classList);
+      inputOperator(classList[1]);
       break;
     case classList.contains('equals'):
       calculate();
@@ -116,6 +116,51 @@ function handleButtonClick(event) {
       break;
     case classList.contains('backspace'):
       deleteCharacter();
+      break;
+  }
+}
+
+function handleKeyboard(event) {
+  event.preventDefault();
+  const keyName = event.key;
+  const numberKeys =
+    [
+      '0', '1', '2',
+      '3', '4', '5',
+      '6', '7', '8',
+      '9', '0', '.'
+    ]
+
+  switch (keyName) {
+    case numberKeys.find(key => key === keyName):
+      inputNumber(keyName);
+      break;
+    case '!':
+      negateNumber();
+      break;
+    case '%':
+      getPercentage();
+      break;
+    case '+':
+      inputOperator('add');
+      break;
+    case '-':
+      inputOperator('subtract');
+      break;
+    case '*':
+      inputOperator('multiply');
+      break;
+    case '/':
+      inputOperator('divide');
+      break;
+    case 'Backspace':
+      deleteCharacter();
+      break;
+    case ('Escape'):
+      clearCalculator();
+      break;
+    case 'Enter':
+      calculate();
       break;
   }
 }
