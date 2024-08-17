@@ -23,25 +23,10 @@ function updateDisplay() {
   calcDisplay.textContent = displayValue;
 }
 
-function handleButtonClick(event) {
-  const target = event.target;
-  const classList = target.classList;
-  if (target.tagName !== 'BUTTON') return;
-
-  switch (true) {
-    case classList.contains('number'):
-      inputNumber(target);
-      break;
-    case classList.contains('operator'):
-      inputOperator(classList);
-      break;
-    case classList.contains('equals'):
-      calculate();
-      break;
-  }
-}
-
 function inputNumber(target) {
+  const number = target.textContent;
+  if (number === '.' && displayValue.includes('.')) return;
+
   if (displayValue === '0') {
     displayValue = '';
   }
@@ -70,4 +55,22 @@ function calculate() {
   operator = '';
   updateDisplay();
   displayValue = '0';
+}
+
+function handleButtonClick(event) {
+  const target = event.target;
+  const classList = target.classList;
+  if (target.tagName !== 'BUTTON') return;
+
+  switch (true) {
+    case classList.contains('number'):
+      inputNumber(target);
+      break;
+    case classList.contains('operator'):
+      inputOperator(classList);
+      break;
+    case classList.contains('equals'):
+      calculate();
+      break;
+  }
 }
