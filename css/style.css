@@ -9,5 +9,20 @@
 }
 
 body {
-  background: #d3d0d0;
+  background: #229ad7;
+  color: #ffffff;
+  outline: none;
+}
+
+body .calculator{
+  background: #229ad7;
+  width: 275px;
+  margin: 200px auto;
+}
+
+.calculator .display {
+  background: #9ab9bccc;
+  font-size: 24px;
+  padding: 16px;
+  text-align: right;
 }
