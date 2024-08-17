@@ -27,10 +27,11 @@ function inputNumber(target) {
   const number = target.textContent;
   if (number === '.' && displayValue.includes('.')) return;
 
-  if (displayValue === '0') {
-    displayValue = '';
+  if (displayValue === '0' || displayValue === 'Error') {
+    displayValue = number;
+  } else {
+    displayValue += number;
   }
-  displayValue += target.textContent;
   updateDisplay();
 }
 
