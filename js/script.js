@@ -16,8 +16,7 @@ const operations = {
 
 function operate(storage, operator) {
   if (storage.length < 2) return;
-  return storage.map(num => Number(num))
-    .reduce(operations[operator]);
+  return storage.map(Number).reduce(operations[operator]);
 }
 
 function updateDisplay() {
