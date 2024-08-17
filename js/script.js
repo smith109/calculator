@@ -3,6 +3,7 @@ const calcButtons = document.querySelector('.btn-container');
 let storage = [];
 let operator = '';
 let displayValue = '0';
+let resultDisplayed = false;
 
 calcButtons.addEventListener('click', handleButtonClick);
 
@@ -27,6 +28,10 @@ function inputNumber(target) {
   const number = target.textContent;
   if (number === '.' && displayValue.includes('.')) return;
 
+  if (resultDisplayed) {
+    displayValue = '0';
+    resultDisplayed = false;
+  }
   if (displayValue === '0' || displayValue === 'Error') {
     displayValue = number;
   } else {
@@ -38,8 +43,7 @@ function inputNumber(target) {
 function inputOperator(classList) {
   if (operator) {
     storage.push(displayValue);
-    let result = operate(storage, operator);
-    displayValue = result;
+    displayValue = operate(storage, operator);
     storage = [];
     updateDisplay();
   }
@@ -50,18 +54,18 @@ function inputOperator(classList) {
 
 function calculate() {
   storage.push(displayValue);
-  let result = operate(storage, operator);
-  displayValue = result;
+  displayValue = operate(storage, operator);
+  resultDisplayed = true;
   storage = [];
   operator = '';
   updateDisplay();
-  displayValue = '0';
 }
 
 function clearCalculator() {
   storage = [];
   operator = '';
   displayValue = '0';
+  resultDisplayed = false;
   updateDisplay();
 }
 
