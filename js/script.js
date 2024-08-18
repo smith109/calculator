@@ -75,7 +75,7 @@ function negateNumber() {
 }
 
 function getPercentage() {
-  displayValue = (Number(displayValue) / 100).toString();
+  displayValue = (Number(displayValue) / 100).toFixed(4).toString();
   updateDisplay();
 }
 
