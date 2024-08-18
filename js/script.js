@@ -25,6 +25,7 @@ function updateDisplay() {
 }
 
 function inputNumber(number) {
+  if (displayValue.length >= 18) return;
   if (number === '.' && displayValue.includes('.')) return;
 
   if (resultDisplayed) {
