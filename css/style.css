@@ -43,7 +43,7 @@ body .calculator {
 }
 
 .btn-container button {
-  background:  #523d98;
+  background: #523d98;
   color: #f1c851;
   font-size: 24px;
   cursor: pointer;
@@ -63,4 +63,21 @@ body .calculator {
 .btn-container .clear {
   background: #bb2913;
   color: #ffffff;
+}
+
+.btn-container button:hover {
+  background: #795ebd;
+  color: white;
+}
+
+.btn-container .operator:hover {
+  background: #5d7bba;
+}
+
+.btn-container .equals:hover {
+  background: #f37c4c;
+}
+
+.btn-container .clear:hover {
+  background: #f1523d;
 }
