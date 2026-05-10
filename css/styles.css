@@ -2,3 +2,79 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  min-height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  background-color: #229ad7;
+  color: #ffffff;
+  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand,
+   Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', 
+   Calibri, source-sans-pro, sans-serif;
+}
+
+div.calculator {
+  width: 325px;
+}
+
+.calculator .display,
+.keypad button {
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.calculator .display {
+  background-color: #9ab9bccc;
+  margin-bottom: 12px;
+  text-align: right;
+  font-size: 30px;
+}
+
+.calculator .keypad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keypad button {
+  background-color: #523d98;
+  color: #f1c851;
+  cursor: pointer;
+  font-size: 24px;
+  flex: 1 1 60px;
+  outline: 0;
+  border: 0;
+}
+
+.keypad button:hover {
+  background-color: #795ebd;
+  color: #ffffff;
+}
+
+.keypad .equals {
+  background-color: #d6643f;
+  color: #ffffff;
+}
+
+.keypad .equals:hover {
+  background-color: #f37c4c;
+}
+
+.keypad .clear {
+  background-color: #bb2913;
+  color: #ffffff;
+}
+
+.keypad .clear:hover {
+  background-color: #f1523d;
+}
+
+.keypad .operator {
+  background-color: #536ea5;
+}
+
+.keypad .operator:hover {
+  background-color: #5d7bba;
+}
