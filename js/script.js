@@ -1,4 +1,5 @@
 const display = document.querySelector('.display');
+const keypad = document.querySelector('.keypad');
 let previousOperand = '';
 let currentOperand = '0';
 let operator = null;
@@ -29,3 +30,14 @@ function appendDigit(number) {
   updateDisplay(currentOperand);
 }
 
+function handleKeypadClick(e) {
+  const target = e.target;
+  if (target.tagName !== 'BUTTON') return;
+
+  if (target.classList.contains('number')) {
+    const number = target.textContent;
+    appendDigit(number);
+  }
+}
+
+keypad.addEventListener('click', handleKeypadClick);
