@@ -1,3 +1,4 @@
+const display = document.querySelector('.display');
 let previousOperand = '';
 let currentOperand = '0';
 let operator = null;
@@ -8,6 +9,10 @@ const operations = {
   multiply: (a, b) => a * b,
   divide: (a, b) => b === 0 ? 'Error' : a / b,
 };
+
+function updateDisplay(value) {
+  display.textContent = value;
+}
 
 function operate(operator, previousOperand, currentOperand) {
   const operationFunc = operations[operator];
