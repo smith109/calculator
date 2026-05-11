@@ -18,3 +18,14 @@ function operate(operator, previousOperand, currentOperand) {
   const operationFunc = operations[operator];
   return operationFunc(previousOperand, currentOperand);
 }
+
+function appendDigit(number) {
+  if (currentOperand === '0') {
+    currentOperand = number;
+  } else {
+    currentOperand += number;
+  }
+
+  updateDisplay(currentOperand);
+}
+
