@@ -17,7 +17,10 @@ function updateDisplay(value) {
 
 function operate(operator, previousOperand, currentOperand) {
   const operationFunc = operations[operator];
-  return operationFunc(previousOperand, currentOperand);
+  const a = Number(previousOperand);
+  const b = Number(currentOperand);
+
+  return operationFunc(a, b);
 }
 
 function appendDigit(number) {
