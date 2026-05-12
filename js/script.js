@@ -30,6 +30,19 @@ function appendDigit(number) {
   updateDisplay(currentOperand);
 }
 
+function storeCurrentOperand() {
+  previousOperand = currentOperand;
+  currentOperand = '';
+}
+
+function setOperator(selectedOperator) {
+  if (previousOperand === '') {
+    storeCurrentOperand();
+  }
+
+  operator = selectedOperator;
+}
+
 function handleKeypadClick(e) {
   const target = e.target;
   if (target.tagName !== 'BUTTON') return;
@@ -37,6 +50,11 @@ function handleKeypadClick(e) {
   if (target.classList.contains('number')) {
     const number = target.textContent;
     appendDigit(number);
+  }
+
+  if (target.classList.contains('operator')) {
+    const selectedOperator = target.classList[1];
+    setOperator(selectedOperator);
   }
 }
 
