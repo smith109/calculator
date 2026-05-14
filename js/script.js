@@ -37,6 +37,26 @@ function appendDigit(number) {
   updateDisplay(currentOperand);
 }
 
+function appendDecimal() {
+  if (isResultDisplayed) {
+    currentOperand = '0.';
+    isResultDisplayed = false;
+  } 
+  
+  if (currentOperand.includes('.')) {
+    updateDisplay(currentOperand);
+    return;
+  } 
+  
+  if (currentOperand === '0' || currentOperand === '') {
+    currentOperand = '0.';
+  } else {
+    currentOperand += '.';
+  }
+
+  updateDisplay(currentOperand);
+}
+
 function storeCurrentOperand() {
   previousOperand = currentOperand;
   currentOperand = '';
@@ -87,6 +107,10 @@ function handleKeypadClick(e) {
   if (target.classList.contains('number')) {
     const number = target.textContent;
     appendDigit(number);
+  }
+
+  if (target.classList.contains('decimal')) {
+    appendDecimal();
   }
 
   if (target.classList.contains('operator')) {
