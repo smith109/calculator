@@ -100,6 +100,16 @@ function clear() {
   operator = null;
 }
 
+function deleteCharacter() {
+  currentOperand = currentOperand.slice(0, -1);
+
+  if (currentOperand === '') {
+    currentOperand = '0';
+  }
+
+  updateDisplay(currentOperand);
+}
+
 function handleKeypadClick(e) {
   const target = e.target;
   if (target.tagName !== 'BUTTON') return;
@@ -125,6 +135,10 @@ function handleKeypadClick(e) {
   if (target.classList.contains('clear')) {
     clear();
     updateDisplay(currentOperand);
+  }
+
+  if (target.classList.contains('backspace')) {
+    deleteCharacter();
   }
 }
 
