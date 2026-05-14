@@ -103,10 +103,16 @@ function clear() {
 function deleteCharacter() {
   currentOperand = currentOperand.slice(0, -1);
 
-  if (currentOperand === '') {
+  if (currentOperand === '' || currentOperand === '-') {
     currentOperand = '0';
   }
 
+  updateDisplay(currentOperand);
+}
+
+function negateNumber() {
+  const invertedOperand = Number(currentOperand) * -1;
+  currentOperand = invertedOperand.toString();
   updateDisplay(currentOperand);
 }
 
@@ -139,6 +145,10 @@ function handleKeypadClick(e) {
 
   if (target.classList.contains('backspace')) {
     deleteCharacter();
+  }
+
+  if (target.classList.contains('negate')) {
+    negateNumber();
   }
 }
 
