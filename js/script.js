@@ -66,6 +66,13 @@ function calculate() {
   updateDisplay(currentOperand);
 }
 
+function clear() {
+  isResultDisplayed = false;
+  previousOperand = '';
+  currentOperand = '0';
+  operator = null;
+}
+
 function handleKeypadClick(e) {
   const target = e.target;
   if (target.tagName !== 'BUTTON') return;
@@ -82,6 +89,11 @@ function handleKeypadClick(e) {
 
   if (target.classList.contains('equals')) {
     calculate();
+  }
+
+  if (target.classList.contains('clear')) {
+    clear();
+    updateDisplay(currentOperand);
   }
 }
 
