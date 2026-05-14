@@ -56,8 +56,15 @@ function setOperator(selectedOperator) {
 
 function calculate() {
   if (currentOperand === '' || operator === null) return; 
-  const result = operate(operator, previousOperand, currentOperand);
+  let result = operate(operator, previousOperand, currentOperand);
 
+  if (result === 'Error') {
+    updateDisplay(result);
+    clear();
+    return;
+  }
+
+  result = Math.round(result * 100) / 100;
   currentOperand = result.toString();
   isResultDisplayed = true;
   previousOperand = '';
