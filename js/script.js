@@ -25,6 +25,8 @@ function operate(operator, previousOperand, currentOperand) {
 }
 
 function appendDigit(number) {
+  if (currentOperand.length >= 18) return;
+
   if (isResultDisplayed) {
     currentOperand = number;
     isResultDisplayed = false;
@@ -38,6 +40,8 @@ function appendDigit(number) {
 }
 
 function appendDecimal() {
+  if (currentOperand.length >= 18) return;
+
   if (isResultDisplayed) {
     currentOperand = '0.';
     isResultDisplayed = false;
