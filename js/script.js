@@ -166,4 +166,52 @@ function handleKeypadClick(e) {
   }
 }
 
+function handleKeyboard(e) {
+  e.preventDefault();
+  const keyName = e.key;
+  const numberKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+  if (numberKeys.find((key) => key === keyName)) {
+    appendDigit(keyName);
+  }
+
+  if (keyName === '+') {
+    setOperator('add');
+  }
+
+  if (keyName === '-') {
+    setOperator('subtract');
+  }
+
+  if (keyName === '*') {
+    setOperator('multiply');
+  }
+
+  if (keyName === '/') {
+    setOperator('divide');
+  }
+
+  if (keyName === 'Enter') {
+    calculate();
+  }
+
+  if (keyName === 'Backspace') {
+    deleteCharacter();
+  }
+
+  if (keyName === 'Escape') {
+    clear();
+    updateDisplay(currentOperand);
+  }
+
+  if (keyName === '%') {
+    getPercentage();
+  }
+
+  if (keyName === 'n') {
+    negateNumber();
+  }
+}
+
 keypad.addEventListener('click', handleKeypadClick);
+document.addEventListener('keydown', handleKeyboard);
