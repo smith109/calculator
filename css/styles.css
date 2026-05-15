@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -10,9 +12,7 @@ body {
   justify-content: center;
   background-color: #229ad7;
   color: #ffffff;
-  font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand,
-   Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', 
-   Calibri, source-sans-pro, sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 div.calculator {
