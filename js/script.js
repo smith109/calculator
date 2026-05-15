@@ -116,6 +116,12 @@ function negateNumber() {
   updateDisplay(currentOperand);
 }
 
+function getPercentage() {
+  const percentage = Number(currentOperand) / 100;
+  currentOperand = percentage.toString();
+  updateDisplay(currentOperand);
+}
+
 function handleKeypadClick(e) {
   const target = e.target;
   if (target.tagName !== 'BUTTON') return;
@@ -149,6 +155,10 @@ function handleKeypadClick(e) {
 
   if (target.classList.contains('negate')) {
     negateNumber();
+  }
+
+  if (target.classList.contains('percent')) {
+    getPercentage();
   }
 }
 
